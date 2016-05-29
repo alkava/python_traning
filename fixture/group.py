@@ -27,6 +27,15 @@ class GroupHelper:
         wd.find_element_by_name("submit").click()
         self.returns_to_group_oage()
 
+    def delete_first_group(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        # select first group
+        wd.find_element_by_name("selected[]").click()
+        # sumbit deletion
+        wd.find_element_by_name("delete").click()
+        self.returns_to_group_oage()
+
     def returns_to_group_oage(self):
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
