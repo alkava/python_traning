@@ -39,6 +39,10 @@ def db(request):
     return dbfixture
 
 
+@pytest.fixture
+def check_ui(request):
+    return request.config.getoption("--check_ui")
+
 @pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def fin():
@@ -50,7 +54,8 @@ def stop(request):
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="firefox")
-    parser.addoption("--target", action="store", default="target.json") # "http://localhost/addressbook/"
+    parser.addoption("--target", action="store", default="target.json")  # "http://localhost/addressbook/"
+    parser.addoption("--check_ui", action="store_true")  # action="store_true" всегда возвращет true, если присудствует этот параметр
 
 
 # -- добавлено в лекции 6.5

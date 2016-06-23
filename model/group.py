@@ -10,6 +10,9 @@ class Group:
 
     def __repr__(self):
         return "%s:%s;%s;%s" % (self.id, self.name, self.header, self.footer)
+    #    return "%s:%s" % (self.id, self.name)
+
+
 
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) and self.name == other.name
@@ -20,5 +23,6 @@ class Group:
             return int(self.id)
         else:
             return maxsize
+
 
 
